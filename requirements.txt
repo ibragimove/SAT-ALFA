@@ -1,0 +1,8 @@
+Django>=5.0,<6.0
+mysqlclient
+django-modeltranslation
+Pillow
+whitenoise
+gunicorn
+requests
+python-dotenv
