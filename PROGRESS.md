@@ -11,3 +11,9 @@
 - Created Ordered abstract base model and all 11 core models with __str__ methods.
 - Registered translatable fields (uz, en, ru) in core/translation.py and generated initial migration 0001_initial.py.
 - Successfully applied migration to MySQL and verified field presence and ORM operations in shell.
+
+## Task 3: Configure Django admin
+- Configured TabbedTranslationAdmin for translated models, TabularInline for TariffFeature, and list_editable for Ordered models.
+- Configured SiteSettings singleton restrictions, read-only Application admin, and image thumbnail previews.
+- Added admin changelist test suite in core/tests_admin.py and verified passing tests and clean system check.
+- Command to run: `python manage.py test core.tests_admin`.
