@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load core_tags %}
+
+{% block content %}
+<!-- Section: Hero -->
+<section id="hero" class="section section-hero">
+  <div class="container hero-container">
+    <div class="hero-content fade-up">
+      <h1 class="hero-title">
+        <span class="hero-title-line1">SAT ALFA</span>
+        <span class="hero-title-line2">{{ site_settings.hero_title }}</span>
+      </h1>
+      {% if site_settings.hero_subtitle %}
+        <p class="hero-subtitle">{{ site_settings.hero_subtitle }}</p>
+      {% endif %}
+      <a href="#faq" class="btn btn-primary hero-btn">
+        <svg class="btn-sparkle" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/>
+        </svg>
+        <span>{% t 'hero_cta' %}</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Section: About (light) -->
+<section id="about" class="section section-light">
+  <div class="container">
+    <h2 class="section-heading fade-up">{% t 'about_title' %}</h2>
+  </div>
+</section>
+
+<!-- Section: Advantages (white) -->
+<section id="advantages" class="section section-white">
+  <div class="container">
+    <h2 class="section-heading fade-up">{% t 'advantages_title' %}</h2>
+  </div>
+</section>
+
+<!-- Section: Teachers (light) -->
+<section id="teachers" class="section section-light">
+  <div class="container">
+    <h2 class="section-heading fade-up">{% t 'teachers_title' %}</h2>
+  </div>
+</section>
+
+<!-- Section: Tariffs Offline (white) -->
+<section id="tariffs-offline" class="section section-white">
+  <div class="container">
+    <h2 class="section-heading fade-up">{% t 'tariffs_offline_title' %}</h2>
+  </div>
+</section>
+
+<!-- Section: Tariffs Online (light) -->
+<section id="tariffs-online" class="section section-light">
+  <div class="container">
+    <h2 class="section-heading fade-up">{% t 'tariffs_online_title' %}</h2>
+  </div>
+</section>
+
+<!-- Section: Results (white) -->
+<section id="results" class="section section-white">
+  <div class="container">
+    <h2 class="section-heading fade-up">{% t 'results_title' %}</h2>
+  </div>
+</section>
+
+<!-- Section: Events (light) -->
+<section id="events" class="section section-light">
+  <div class="container">
+    <h2 class="section-heading fade-up">{% t 'events_title' %}</h2>
+  </div>
+</section>
+
+<!-- Section: Location (white) -->
+<section id="location" class="section section-white">
+  <div class="container">
+    <h2 class="section-heading fade-up">{% t 'location_title' %}</h2>
+  </div>
+</section>
+
+<!-- Section: FAQ (light) -->
+<section id="faq" class="section section-light">
+  <div class="container">
+    <h2 class="section-heading fade-up">{% t 'faq_title' %}</h2>
+  </div>
+</section>
+{% endblock %}

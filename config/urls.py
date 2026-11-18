@@ -1,13 +1,24 @@
 from django.conf import settings
+from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
-from django.views.debug import default_urlconf
+from django.shortcuts import redirect
+from django.urls import include, path
+
+
+def root_redirect(request):
+    return redirect('/uz/', permanent=False)
+
 
 urlpatterns = [
-    path('', default_urlconf),
     path('admin/', admin.site.urls),
+    path('', root_redirect, name='root_redirect'),
 ]
+
+urlpatterns += i18n_patterns(
+    path('', include('core.urls')),
+    prefix_default_language=True,
+)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

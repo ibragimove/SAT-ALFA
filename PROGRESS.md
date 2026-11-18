@@ -23,3 +23,9 @@
 - Seeded all 46 TextBlock keys, SiteSettings, Stats, Advantages, Teachers, TariffPlans, TariffFeatures, Results, Events, and FAQs in uz, en, and ru.
 - Verified command idempotency (running twice produces identical row counts) and verified translation tabs in admin.
 - Command to run: `python manage.py seed_demo`.
+
+## Task 5: Page skeleton, language URLs, navbar and CSS design system
+- Configured i18n_patterns with prefix_default_language=True, root '/' redirect to '/uz/', and core.urls routing.
+- Implemented {% t 'key' %} with request-level caching and {% lang_url 'code' %} template tags.
+- Built base.html, partials/_navbar.html, partials/_footer.html, home.html with all 10 section IDs, CSS design system, and JS.
+- Verified /uz/, /en/, /ru/ return 200 with matching translated nav labels, pill navbar styling, and check passes.
