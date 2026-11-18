@@ -6,26 +6,9 @@
 {% include 'partials/_about.html' %}
 {% include 'partials/_advantages.html' %}
 
-<!-- Section: Teachers (light) -->
-<section id="teachers" class="section section-light">
-  <div class="container">
-    <h2 class="section-heading fade-up">{% t 'teachers_title' %}</h2>
-  </div>
-</section>
-
-<!-- Section: Tariffs Offline (white) -->
-<section id="tariffs-offline" class="section section-white">
-  <div class="container">
-    <h2 class="section-heading fade-up">{% t 'tariffs_offline_title' %}</h2>
-  </div>
-</section>
-
-<!-- Section: Tariffs Online (light) -->
-<section id="tariffs-online" class="section section-light">
-  <div class="container">
-    <h2 class="section-heading fade-up">{% t 'tariffs_online_title' %}</h2>
-  </div>
-</section>
+{% include 'partials/_teachers.html' %}
+{% include 'partials/_tariffs.html' with section_id="tariffs-offline" section_title_key="tariffs_offline_title" plans=tariffs_offline section_theme="section-white" blob_pos="left" %}
+{% include 'partials/_tariffs.html' with section_id="tariffs-online" section_title_key="tariffs_online_title" plans=tariffs_online section_theme="section-light" blob_pos="right" %}
 
 <!-- Section: Results (white) -->
 <section id="results" class="section section-white">

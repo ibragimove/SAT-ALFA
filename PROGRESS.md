@@ -35,3 +35,9 @@
 - Built partials/_about.html with left video card (poster, play button, in-place play handler in main.js) and right Stats grid with decorative yellow accents.
 - Built partials/_advantages.html with 3-col/1-col Advantage grid (dark highlighted card) and full-width yellow events banner with sparkles and CTA.
 - Added sections.css, verified responsive rendering with seed data at 375px/1280px in uz/en/ru, and confirmed dynamic Stat updates reflect immediately.
+
+## Task 7: Teachers and Tariffs sections
+- Created partials/_teachers.html featuring responsive card grid (5 cols desktop, 3 tablet, 2 mobile) with gradient placeholder + initials fallback, uppercase names, and chips for SAT score, experience, and students.
+- Created reusable partials/_tariffs.html used for both #tariffs-offline and #tariffs-online, rendering Group (yellow header) and Individual (black header) cards with prices, price notes, bolt-icon features, and full-width CTA buttons.
+- Appended styling and soft yellow decorative shapes to static/css/sections.css.
+- Verified 4 tariff cards render across uz/en/ru, dynamic price updates reflect immediately, and verified zero horizontal overflow at 375px.

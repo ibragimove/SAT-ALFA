@@ -435,3 +435,411 @@
 .events-banner-btn {
   margin-top: 8px;
 }
+
+/* ==========================================================================
+   TEACHERS
+   ========================================================================== */
+
+.section-teachers {
+  padding: 90px 0;
+}
+
+.section-teachers .section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-teachers .section-subtitle {
+  font-size: clamp(14px, 1.8vw, 16px);
+  color: var(--gray-text);
+  margin-top: 10px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.teachers-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1100px) {
+  .teachers-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .teachers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+.teacher-card {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: #17161F;
+  box-shadow: var(--shadow-soft);
+  aspect-ratio: 3 / 4.4;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.teacher-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+@media (max-width: 640px) {
+  .teacher-card {
+    min-height: 250px;
+    aspect-ratio: 3 / 4.2;
+  }
+}
+
+.teacher-card-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.teacher-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.teacher-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #181722 0%, #252332 50%, #0D0C11 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.teacher-avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(241, 255, 10, 0.12);
+  border: 2px solid rgba(241, 255, 10, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 640px) {
+  .teacher-avatar {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 40px;
+  }
+}
+
+.teacher-initials {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--yellow);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 640px) {
+  .teacher-initials {
+    font-size: 18px;
+  }
+}
+
+.teacher-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 12, 17, 0.05) 0%,
+    rgba(13, 12, 17, 0.3) 40%,
+    rgba(13, 12, 17, 0.85) 75%,
+    rgba(13, 12, 17, 0.98) 100%
+  );
+  pointer-events: none;
+}
+
+.teacher-info {
+  position: relative;
+  z-index: 1;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media (max-width: 640px) {
+  .teacher-info {
+    padding: 12px 10px;
+    gap: 6px;
+  }
+}
+
+.teacher-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .teacher-name {
+    font-size: 12px;
+  }
+}
+
+.teacher-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+.teacher-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(4px);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.2;
+  max-width: 100%;
+  word-break: break-word;
+}
+
+@media (max-width: 640px) {
+  .teacher-chip {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+}
+
+.teacher-chip--sat {
+  background: rgba(241, 255, 10, 0.2);
+  color: var(--yellow);
+  border: 1px solid rgba(241, 255, 10, 0.35);
+  font-weight: 700;
+}
+
+.chip-label {
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.chip-val {
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   TARIFFS (Offline & Online)
+   ========================================================================== */
+
+.section-tariffs {
+  position: relative;
+  overflow: hidden;
+  padding: 90px 0;
+}
+
+/* Soft yellow decorative shapes */
+.decor-blob--tariffs-left {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+  width: 380px;
+  height: 380px;
+  top: 10%;
+  left: -140px;
+  background: radial-gradient(circle, rgba(241, 255, 10, 0.12) 0%, transparent 70%);
+}
+
+.decor-blob--tariffs-right {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+  width: 340px;
+  height: 340px;
+  bottom: 5%;
+  right: -120px;
+  background: radial-gradient(circle, rgba(241, 255, 10, 0.10) 0%, transparent 70%);
+}
+
+.tariffs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .tariffs-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 460px;
+  }
+}
+
+.tariff-card {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.tariff-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Header: Yellow for Group, Black for Individual */
+.tariff-header {
+  padding: 24px 28px;
+}
+
+@media (max-width: 480px) {
+  .tariff-header {
+    padding: 20px 20px;
+  }
+}
+
+.tariff-card--group .tariff-header {
+  background: var(--yellow);
+}
+
+.tariff-card--individual .tariff-header {
+  background: var(--black);
+}
+
+.tariff-title {
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.tariff-card--group .tariff-title {
+  color: var(--black);
+}
+
+.tariff-card--individual .tariff-title {
+  color: var(--yellow);
+}
+
+/* Body */
+.tariff-body {
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+@media (max-width: 480px) {
+  .tariff-body {
+    padding: 24px 20px;
+  }
+}
+
+.tariff-price-wrap {
+  margin-bottom: 24px;
+}
+
+.tariff-price {
+  font-size: clamp(24px, 3.5vw, 32px);
+  font-weight: 800;
+  color: var(--black);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.tariff-price-note {
+  font-size: 14px;
+  color: var(--gray-text);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* Features */
+.tariff-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.tariff-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--black);
+  line-height: 1.45;
+}
+
+.tariff-bolt {
+  width: 18px;
+  height: 18px;
+  color: var(--black);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Full-width Black Button */
+.tariff-cta-wrap {
+  margin-top: auto;
+}
+
+.tariff-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--black);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 15px 24px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--black);
+  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+  text-align: center;
+}
+
+.tariff-btn:hover {
+  background: var(--yellow);
+  color: var(--black);
+  border-color: var(--yellow);
+  transform: translateY(-2px);
+}

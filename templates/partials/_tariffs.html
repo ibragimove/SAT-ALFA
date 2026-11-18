@@ -1,0 +1,59 @@
+{% load core_tags %}
+<section id="{{ section_id }}" class="section {{ section_theme }} section-tariffs">
+  <!-- Soft yellow decorative shape -->
+  <div class="decor-blob {% if blob_pos == 'left' %}decor-blob--tariffs-left{% else %}decor-blob--tariffs-right{% endif %}" aria-hidden="true"></div>
+
+  <div class="container">
+    <h2 class="section-heading fade-up">
+      {% if section_title_key == 'tariffs_offline_title' %}
+        {% t 'tariffs_offline_title' %}
+      {% elif section_title_key == 'tariffs_online_title' %}
+        {% t 'tariffs_online_title' %}
+      {% else %}
+        {% t section_title_key %}
+      {% endif %}
+    </h2>
+
+    <div class="tariffs-grid">
+      {% for plan in plans %}
+        <div class="tariff-card {% if plan.kind == 'group' %}tariff-card--group{% else %}tariff-card--individual{% endif %} fade-up">
+          <div class="tariff-header">
+            <h3 class="tariff-title">{{ plan.title }}</h3>
+          </div>
+
+          <div class="tariff-body">
+            <div class="tariff-price-wrap">
+              <div class="tariff-price">{{ plan.price }}</div>
+              {% if plan.price_note %}
+                <div class="tariff-price-note">{{ plan.price_note }}</div>
+              {% endif %}
+            </div>
+
+            <ul class="tariff-features">
+              {% for feature in plan.features.all %}
+                <li class="tariff-feature">
+                  <svg class="tariff-bolt" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                  </svg>
+                  <span>{{ feature.text }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+
+            <div class="tariff-cta-wrap">
+              <a href="#contact" class="btn btn-secondary tariff-btn">
+                <span>
+                  {% if plan.kind == 'group' %}
+                    {% t 'tariffs_cta_group' %}
+                  {% else %}
+                    {% t 'tariffs_cta_individual' %}
+                  {% endif %}
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

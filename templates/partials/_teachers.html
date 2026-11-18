@@ -1,0 +1,52 @@
+{% load core_tags %}
+<section id="teachers" class="section section-light section-teachers">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2 class="section-heading">{% t 'teachers_title' %}</h2>
+      <p class="section-subtitle">{% t 'teachers_subtitle' %}</p>
+    </div>
+
+    <div class="teachers-grid">
+      {% for teacher in teachers %}
+        <div class="teacher-card fade-up">
+          <div class="teacher-card-media">
+            {% if teacher.photo %}
+              <img src="{{ teacher.photo.url }}" alt="{{ teacher.name }}" class="teacher-photo" loading="lazy">
+            {% else %}
+              <div class="teacher-placeholder">
+                <div class="teacher-avatar">
+                  <span class="teacher-initials">{{ teacher.name|slice:":2"|upper }}</span>
+                </div>
+              </div>
+            {% endif %}
+            <div class="teacher-overlay"></div>
+          </div>
+
+          <div class="teacher-info">
+            <h3 class="teacher-name">{{ teacher.name|upper }}</h3>
+            <div class="teacher-chips">
+              {% if teacher.sat_score %}
+                <span class="teacher-chip teacher-chip--sat">
+                  <span class="chip-label">{% t 'label_sat_score' %}:</span>
+                  <span class="chip-val">{{ teacher.sat_score }}</span>
+                </span>
+              {% endif %}
+              {% if teacher.experience %}
+                <span class="teacher-chip">
+                  <span class="chip-label">{% t 'label_experience' %}:</span>
+                  <span class="chip-val">{{ teacher.experience }}</span>
+                </span>
+              {% endif %}
+              {% if teacher.students %}
+                <span class="teacher-chip">
+                  <span class="chip-label">{% t 'label_students' %}:</span>
+                  <span class="chip-val">{{ teacher.students }}</span>
+                </span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
