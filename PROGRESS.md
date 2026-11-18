@@ -29,3 +29,9 @@
 - Implemented {% t 'key' %} with request-level caching and {% lang_url 'code' %} template tags.
 - Built base.html, partials/_navbar.html, partials/_footer.html, home.html with all 10 section IDs, CSS design system, and JS.
 - Verified /uz/, /en/, /ru/ return 200 with matching translated nav labels, pill navbar styling, and check passes.
+
+## Task 6: Hero, About, and Advantages sections
+- Built partials/_hero.html with video background/poster, dark overlay, SiteSettings hero title/subtitle, yellow CTA, and black gradient fallback.
+- Built partials/_about.html with left video card (poster, play button, in-place play handler in main.js) and right Stats grid with decorative yellow accents.
+- Built partials/_advantages.html with 3-col/1-col Advantage grid (dark highlighted card) and full-width yellow events banner with sparkles and CTA.
+- Added sections.css, verified responsive rendering with seed data at 375px/1280px in uz/en/ru, and confirmed dynamic Stat updates reflect immediately.

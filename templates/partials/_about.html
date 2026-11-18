@@ -1,0 +1,54 @@
+{% load core_tags %}
+<section id="about" class="section section-light section-about">
+  <!-- Decorative blob top-right -->
+  <div class="decor-blob decor-blob--about-tr" aria-hidden="true"></div>
+
+  <div class="container">
+    <h2 class="section-heading fade-up">{% t 'about_title' %}</h2>
+
+    <div class="about-grid">
+      <!-- Left: Video card -->
+      <div class="about-video-card fade-up">
+        <div class="about-video-wrap" id="about-video-wrap">
+          {% if site_settings.about_video %}
+            <video class="about-video" id="about-video" preload="none" playsinline
+                   {% if site_settings.about_poster %}poster="{{ site_settings.about_poster.url }}"{% endif %}>
+              <source src="{{ site_settings.about_video.url }}" type="video/mp4">
+            </video>
+          {% endif %}
+
+          {% if site_settings.about_poster %}
+            <img class="about-poster" id="about-poster" src="{{ site_settings.about_poster.url }}" alt="{% t 'about_video_label' %}" loading="lazy">
+          {% else %}
+            <div class="about-poster about-poster--gradient" id="about-poster"></div>
+          {% endif %}
+
+          {% if site_settings.about_video %}
+            <button type="button" class="about-play-btn" id="about-play-btn" aria-label="{% t 'about_video_label' %}">
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                <circle cx="26" cy="26" r="26" fill="rgba(13,12,17,0.65)"/>
+                <polygon points="21,16 38,26 21,36" fill="var(--yellow)"/>
+              </svg>
+            </button>
+          {% endif %}
+        </div>
+        <p class="about-video-label">{% t 'about_video_label' %}</p>
+      </div>
+
+      <!-- Right: Stats grid -->
+      <div class="about-stats fade-up">
+        {% for stat in stats %}
+          <div class="stat-card">
+            <!-- small decorative yellow accent -->
+            <span class="stat-accent" aria-hidden="true"></span>
+            <span class="stat-value">{{ stat.value }}</span>
+            <span class="stat-label">{{ stat.label }}</span>
+            {% if stat.note %}
+              <span class="stat-note">{{ stat.note }}</span>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

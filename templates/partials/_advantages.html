@@ -1,0 +1,47 @@
+{% load core_tags %}
+<section id="advantages" class="section section-white section-advantages">
+  <div class="container">
+    <h2 class="section-heading fade-up">{% t 'advantages_title' %}</h2>
+
+    <div class="advantages-grid">
+      {% for adv in advantages %}
+        <div class="advantage-card {% if adv.is_highlighted %}advantage-card--dark{% endif %} fade-up">
+          <div class="advantage-icon" aria-hidden="true">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="{% if adv.is_highlighted %}var(--yellow){% else %}var(--black){% endif %}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <h3 class="advantage-title">{{ adv.title }}</h3>
+          <p class="advantage-text">{{ adv.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Events Banner -->
+  <div class="events-banner fade-up">
+    <div class="container events-banner-inner">
+      <h3 class="events-banner-title">{% t 'events_banner_title' %}</h3>
+      <div class="events-banner-lines">
+        <p class="events-banner-line">
+          <svg class="banner-sparkle" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/>
+          </svg>
+          <span>{% t 'events_banner_line1' %}</span>
+        </p>
+        <p class="events-banner-line">
+          <svg class="banner-sparkle" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/>
+          </svg>
+          <span>{% t 'events_banner_line2' %}</span>
+        </p>
+      </div>
+      <a href="#events" class="btn btn-secondary events-banner-btn">
+        <svg class="btn-sparkle" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/>
+        </svg>
+        <span>{% t 'events_banner_cta' %}</span>
+      </a>
+    </div>
+  </div>
+</section>

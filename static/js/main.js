@@ -109,4 +109,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fadeElements.forEach((el) => observer.observe(el));
   }
+
+  // 5. About Section Video Play Handler
+  const aboutVideoWrap = document.getElementById('about-video-wrap');
+  const aboutVideo = document.getElementById('about-video');
+  const aboutPoster = document.getElementById('about-poster');
+  const aboutPlayBtn = document.getElementById('about-play-btn');
+
+  if (aboutVideo && aboutPlayBtn) {
+    const playAboutVideo = () => {
+      aboutPlayBtn.classList.add('hidden');
+      if (aboutPoster) aboutPoster.classList.add('hidden');
+      aboutVideo.classList.add('playing');
+      aboutVideo.controls = true;
+      aboutVideo.play().catch(() => {});
+    };
+
+    aboutPlayBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      playAboutVideo();
+    });
+
+    if (aboutVideoWrap) {
+      aboutVideoWrap.addEventListener('click', () => {
+        if (!aboutVideo.classList.contains('playing')) {
+          playAboutVideo();
+        }
+      });
+    }
+  }
 });
