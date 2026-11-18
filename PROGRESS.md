@@ -17,3 +17,9 @@
 - Configured SiteSettings singleton restrictions, read-only Application admin, and image thumbnail previews.
 - Added admin changelist test suite in core/tests_admin.py and verified passing tests and clean system check.
 - Command to run: `python manage.py test core.tests_admin`.
+
+## Task 4: Seed demo data management command
+- Created management command `seed_demo` in core/management/commands/seed_demo.py.
+- Seeded all 46 TextBlock keys, SiteSettings, Stats, Advantages, Teachers, TariffPlans, TariffFeatures, Results, Events, and FAQs in uz, en, and ru.
+- Verified command idempotency (running twice produces identical row counts) and verified translation tabs in admin.
+- Command to run: `python manage.py seed_demo`.
