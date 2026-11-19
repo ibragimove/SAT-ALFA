@@ -41,3 +41,9 @@
 - Created reusable partials/_tariffs.html used for both #tariffs-offline and #tariffs-online, rendering Group (yellow header) and Individual (black header) cards with prices, price notes, bolt-icon features, and full-width CTA buttons.
 - Appended styling and soft yellow decorative shapes to static/css/sections.css.
 - Verified 4 tariff cards render across uz/en/ru, dynamic price updates reflect immediately, and verified zero horizontal overflow at 375px.
+
+## Task 8: Results and Events horizontal carousels
+- Created static/js/carousel.js with CSS scroll-snap, prev/next navigation buttons with auto-disabled states, and smooth mouse-drag support for all elements with `data-carousel`.
+- Built partials/_results.html with Results cards on yellow gradients, prominent score number typography, certificate watermark fallback when no image is present, and black CTA button to #contact.
+- Built partials/_events.html with Event poster cards in 3:4 ratio, date badges, titles, descriptions, and sleek dark gradient fallback.
+- Linked carousel.js in base.html and appended all carousel and card styling to static/css/sections.css.

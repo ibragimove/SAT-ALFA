@@ -843,3 +843,327 @@
   border-color: var(--yellow);
   transform: translateY(-2px);
 }
+
+/* ==========================================================================
+   CAROUSEL COMPONENT (Results & Events)
+   ========================================================================== */
+
+.carousel-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.carousel-heading-wrap {
+  flex: 1;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.carousel-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(13, 12, 17, 0.15);
+  background: var(--white);
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-soft);
+}
+
+.carousel-btn:hover:not(:disabled) {
+  background: var(--yellow);
+  border-color: var(--yellow);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.carousel-btn:disabled,
+.carousel-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+  padding: 8px 4px 20px 4px;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-track.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  user-select: none;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+/* ==========================================================================
+   RESULTS SECTION
+   ========================================================================== */
+
+.section-results {
+  padding: 90px 0;
+}
+
+.result-card {
+  width: clamp(240px, 28vw, 300px);
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-card);
+  background: linear-gradient(155deg, #FAFFA5 0%, #F1FF0A 50%, #D8E600 100%);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 22px;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.result-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.result-card-media {
+  width: 100%;
+  height: 60%;
+  border-radius: calc(var(--radius-card) - 6px);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.result-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* No image fallback */
+.result-card-cert {
+  position: relative;
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.cert-watermark {
+  position: absolute;
+  right: -12px;
+  top: -16px;
+  font-size: 80px;
+  font-weight: 900;
+  color: rgba(13, 12, 17, 0.06);
+  letter-spacing: -0.05em;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  background: var(--black);
+  color: var(--yellow);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+}
+
+.result-student {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--black);
+  line-height: 1.3;
+  margin-top: 6px;
+}
+
+.result-card-footer {
+  margin-top: auto;
+  border-top: 2px dashed rgba(13, 12, 17, 0.15);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.result-score-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(13, 12, 17, 0.65);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.result-score {
+  font-size: clamp(38px, 5.5vw, 52px);
+  font-weight: 900;
+  color: var(--black);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.results-cta-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.results-cta-btn {
+  padding: 16px 36px;
+  font-size: 16px;
+}
+
+/* ==========================================================================
+   EVENTS SECTION
+   ========================================================================== */
+
+.section-events {
+  padding: 90px 0;
+}
+
+.event-poster {
+  width: clamp(260px, 30vw, 320px);
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  background: #1C1A24;
+}
+
+.event-poster:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.event-poster-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.event-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-poster-gradient {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: linear-gradient(150deg, #1f1d2b 0%, #29273a 50%, #121118 100%);
+}
+
+.event-decor-shape {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(241, 255, 10, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.event-poster-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 12, 17, 0.1) 0%,
+    rgba(13, 12, 17, 0.5) 45%,
+    rgba(13, 12, 17, 0.92) 80%,
+    rgba(13, 12, 17, 0.98) 100%
+  );
+  pointer-events: none;
+}
+
+.event-poster-content {
+  position: relative;
+  z-index: 2;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.event-date-badge {
+  display: inline-flex;
+  align-self: flex-start;
+  background: var(--yellow);
+  color: var(--black);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.event-poster-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.3;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.event-poster-desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.45;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

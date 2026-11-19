@@ -10,19 +10,8 @@
 {% include 'partials/_tariffs.html' with section_id="tariffs-offline" section_title_key="tariffs_offline_title" plans=tariffs_offline section_theme="section-white" blob_pos="left" %}
 {% include 'partials/_tariffs.html' with section_id="tariffs-online" section_title_key="tariffs_online_title" plans=tariffs_online section_theme="section-light" blob_pos="right" %}
 
-<!-- Section: Results (white) -->
-<section id="results" class="section section-white">
-  <div class="container">
-    <h2 class="section-heading fade-up">{% t 'results_title' %}</h2>
-  </div>
-</section>
-
-<!-- Section: Events (light) -->
-<section id="events" class="section section-light">
-  <div class="container">
-    <h2 class="section-heading fade-up">{% t 'events_title' %}</h2>
-  </div>
-</section>
+{% include 'partials/_results.html' %}
+{% include 'partials/_events.html' %}
 
 <!-- Section: Location (white) -->
 <section id="location" class="section section-white">
