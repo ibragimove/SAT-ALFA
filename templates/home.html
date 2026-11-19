@@ -13,18 +13,6 @@
 {% include 'partials/_results.html' %}
 {% include 'partials/_events.html' %}
 
-<!-- Section: Location (white) -->
-<section id="location" class="section section-white">
-  <div class="container">
-    <h2 class="section-heading fade-up">{% t 'location_title' %}</h2>
-  </div>
-</section>
-
-<!-- Section: FAQ (light) -->
-<section id="faq" class="section section-light">
-  <div class="container">
-    <h2 class="section-heading fade-up">{% t 'faq_title' %}</h2>
-    <div id="contact"></div>
-  </div>
-</section>
+{% include 'partials/_location.html' %}
+{% include 'partials/_faq.html' %}
 {% endblock %}

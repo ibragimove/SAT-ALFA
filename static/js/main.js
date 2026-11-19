@@ -138,4 +138,104 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
+
+  // 6. FAQ Accordion (one open at a time, smooth transition)
+  const faqAccordion = document.getElementById('faq-accordion');
+  if (faqAccordion) {
+    const faqItems = faqAccordion.querySelectorAll('.faq-item');
+
+    faqItems.forEach((item) => {
+      const btn = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+
+      if (!btn || !answer) return;
+
+      btn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+
+        // Close all items
+        faqItems.forEach((other) => {
+          if (other !== item && other.classList.contains('open')) {
+            other.classList.remove('open');
+            const otherBtn = other.querySelector('.faq-question');
+            const otherAnswer = other.querySelector('.faq-answer');
+            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+            if (otherAnswer) otherAnswer.style.maxHeight = null;
+          }
+        });
+
+        // Toggle current item
+        if (isOpen) {
+          item.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          answer.style.maxHeight = null;
+        } else {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+  }
+
+  // 7. Phone Input Mask: +998 (XX) XXX-XX-XX
+  const phoneInputs = document.querySelectorAll('#contact-phone, input[type="tel"]');
+  phoneInputs.forEach((input) => {
+    const formatValue = (raw) => {
+      let digits = raw.replace(/\D/g, '');
+      if (digits.startsWith('998')) {
+        digits = digits.slice(3);
+      }
+      digits = digits.slice(0, 9);
+
+      if (!digits.length) return '';
+
+      let res = '+998';
+      if (digits.length > 0) {
+        res += ' (' + digits.slice(0, 2);
+      }
+      if (digits.length >= 2) {
+        res += ') ';
+      }
+      if (digits.length > 2) {
+        res += digits.slice(2, 5);
+      }
+      if (digits.length >= 5) {
+        res += '-';
+      }
+      if (digits.length > 5) {
+        res += digits.slice(5, 7);
+      }
+      if (digits.length >= 7) {
+        res += '-';
+      }
+      if (digits.length > 7) {
+        res += digits.slice(7, 9);
+      }
+      return res;
+    };
+
+    input.addEventListener('focus', () => {
+      if (!input.value) {
+        input.value = '+998 (';
+      }
+    });
+
+    input.addEventListener('blur', () => {
+      if (input.value === '+998 (' || input.value === '+998') {
+        input.value = '';
+      }
+    });
+
+    input.addEventListener('input', () => {
+      input.value = formatValue(input.value);
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Backspace' && input.value.length <= 6) {
+        e.preventDefault();
+        input.value = '';
+      }
+    });
+  });
 });

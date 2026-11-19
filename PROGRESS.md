@@ -47,3 +47,9 @@
 - Built partials/_results.html with Results cards on yellow gradients, prominent score number typography, certificate watermark fallback when no image is present, and black CTA button to #contact.
 - Built partials/_events.html with Event poster cards in 3:4 ratio, date badges, titles, descriptions, and sleek dark gradient fallback.
 - Linked carousel.js in base.html and appended all carousel and card styling to static/css/sections.css.
+
+## Task 9: Location, FAQ Accordion, Contact Card, and Footer
+- Built partials/_location.html featuring map embed/iframe next to detailed info card (address, hours, phone) and Google/Yandex maps action buttons.
+- Built partials/_faq.html with FAQ accordion (smooth animation, one open at a time, plus rotates into cross) and Contact card (#contact) with name, phone (+998 mask), and yellow submit button.
+- Updated partials/_footer.html with brand logo, dynamic social icons (Telegram, Instagram, YouTube when defined in SiteSettings), and copyright text.
+- Added accordion toggle and +998 (XX) XXX-XX-XX input mask in main.js, verified clean rendering across uz/en/ru without console errors.
