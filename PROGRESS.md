@@ -81,3 +81,11 @@
 - Implemented modal open/close, backdrop click, Escape key dismiss, focus trap, and return-to-trigger focus in `static/js/main.js`.
 - Added yellow floating form button with black message icon next to floating call button, plus `data-open-form` across hero CTA, tariffs, results, and floating button.
 - Added test suite `core/tests_modal.py` validating 200 status, modal ID presence, at least 4 `data-open-form` elements, 2 honeypot inputs, and no duplicate IDs.
+
+
+## FIX C: Dual form AJAX submission and modal auto-close
+- Added `data-apply-form` attribute to `templates/partials/_form.html`.
+- Updated `static/js/form.js` to dynamically select and bind submit handlers and phone masks independently to every application form using relative DOM queries, eliminating hardcoded single-form IDs.
+- Added double-click protection (`isSubmitting` lock + button disable) and modal auto-close after 2.5s on successful submission (modal stays open on errors).
+- Extended `core/tests_modal.py` with mock Telegram testing verifying dual form submission saving 2 Application records; all 17 tests pass.
+- Command to run: `python manage.py test`.

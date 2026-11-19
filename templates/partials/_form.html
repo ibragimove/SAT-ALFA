@@ -1,5 +1,5 @@
 {% load core_tags %}
-<form class="contact-form" id="{{ prefix }}-form" method="post" action="{% url 'core:apply' %}"
+<form class="contact-form" id="{{ prefix }}-form" data-apply-form method="post" action="{% url 'core:apply' %}"
       data-success="{% t 'form_success' %}"
       data-error="{% t 'form_error' %}" novalidate>
   {% csrf_token %}
