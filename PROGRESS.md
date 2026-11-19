@@ -53,3 +53,10 @@
 - Built partials/_faq.html with FAQ accordion (smooth animation, one open at a time, plus rotates into cross) and Contact card (#contact) with name, phone (+998 mask), and yellow submit button.
 - Updated partials/_footer.html with brand logo, dynamic social icons (Telegram, Instagram, YouTube when defined in SiteSettings), and copyright text.
 - Added accordion toggle and +998 (XX) XXX-XX-XX input mask in main.js, verified clean rendering across uz/en/ru without console errors.
+
+## Task 10: Contact form submission and Telegram notifications
+- Created core/forms.py with ApplicationForm validating name (2-100 chars) and phone (+998 followed by exactly 9 digits).
+- Created core/telegram.py sending formatted, HTML-escaped Telegram alerts with a 5s timeout without raising on network failures.
+- Implemented core/views.py 'apply' POST-only endpoint with CSRF check, honeypot protection, 5 reqs/10 min IP rate limiting, DB save, and Telegram alert.
+- Created static/js/form.js for AJAX submission with CSRF header, button disabling, form reset, and translated status messages.
+- Added comprehensive test suite in core/tests_apply.py (7 tests covering valid save, bad phone, honeypot, and 429 rate limit); all 10 project tests pass.
