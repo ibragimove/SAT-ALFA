@@ -11,7 +11,7 @@
       <div class="about-video-card fade-up">
         <div class="about-video-wrap" id="about-video-wrap">
           {% if site_settings.about_video %}
-            <video class="about-video" id="about-video" preload="none" playsinline
+            <video class="about-video" id="about-video" preload="metadata" playsinline
                    {% if site_settings.about_poster %}poster="{{ site_settings.about_poster.url }}"{% endif %}>
               <source src="{{ site_settings.about_video.url }}" type="video/mp4">
             </video>

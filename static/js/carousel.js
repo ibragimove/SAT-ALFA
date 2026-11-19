@@ -41,13 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (prevBtn) {
       prevBtn.addEventListener('click', () => {
-        track.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        track.scrollBy({ left: -getScrollStep(), behavior: prefersReduced ? 'auto' : 'smooth' });
       });
     }
 
     if (nextBtn) {
       nextBtn.addEventListener('click', () => {
-        track.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        track.scrollBy({ left: getScrollStep(), behavior: prefersReduced ? 'auto' : 'smooth' });
       });
     }
 

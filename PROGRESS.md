@@ -60,3 +60,10 @@
 - Implemented core/views.py 'apply' POST-only endpoint with CSRF check, honeypot protection, 5 reqs/10 min IP rate limiting, DB save, and Telegram alert.
 - Created static/js/form.js for AJAX submission with CSRF header, button disabling, form reset, and translated status messages.
 - Added comprehensive test suite in core/tests_apply.py (7 tests covering valid save, bad phone, honeypot, and 429 rate limit); all 10 project tests pass.
+
+## Task 11: Responsive, accessibility, and performance pass
+- Verified zero horizontal overflow across 360px, 768px, 1280px, and 1920px viewports with carousel wrapping safeguards.
+- Enforced 44px minimum tap targets across mobile burger, close button, navigation links, language switcher, and social buttons.
+- Ensured all images have descriptive alt text, added high-contrast :focus-visible outlines, and dynamic <html lang> attributes.
+- Configured loading='lazy' on all content images and updated about-video to preload='metadata'.
+- Implemented prefers-reduced-motion overrides disabling fade-up animations and carousel/anchor smooth scrolling.

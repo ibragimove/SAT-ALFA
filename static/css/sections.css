@@ -896,6 +896,13 @@
   pointer-events: none;
 }
 
+.results-carousel-wrap,
+.events-carousel-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
 .carousel-track {
   display: flex;
   gap: 24px;
@@ -906,6 +913,12 @@
   scrollbar-width: none;
   cursor: grab;
   padding: 8px 4px 20px 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track {
+    scroll-behavior: auto !important;
+  }
 }
 
 .carousel-track::-webkit-scrollbar {
@@ -1294,6 +1307,7 @@
   color: var(--black);
   line-height: 1.4;
   margin: 0;
+  word-break: break-word;
 }
 
 .detail-phone {
@@ -1552,8 +1566,10 @@
 }
 
 .social-link {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08);
   color: var(--white);

@@ -128,6 +128,21 @@ img, svg, video {
   color: var(--black);
 }
 
+.btn-secondary .btn-sparkle {
+  color: var(--yellow);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--black);
+  border: 2px solid var(--black);
+}
+
+.btn-outline:hover {
+  background-color: var(--black);
+  color: var(--white);
+}
+
 /* ==========================================================================
    Floating Navbar (Pill)
    ========================================================================== */
@@ -297,13 +312,16 @@ img, svg, video {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 5px;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 4px;
+  padding: 10px 8px;
   color: inherit;
 }
 
@@ -361,6 +379,13 @@ img, svg, video {
   font-size: 36px;
   line-height: 1;
   cursor: pointer;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mobile-nav-links {
@@ -376,6 +401,9 @@ img, svg, video {
   text-transform: uppercase;
   color: var(--white);
   transition: color 0.2s;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
 }
 
 .mobile-nav-item:hover {
@@ -394,6 +422,9 @@ img, svg, video {
   font-size: 18px;
   font-weight: 700;
   color: var(--yellow);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .mobile-lang-switcher {
@@ -403,7 +434,12 @@ img, svg, video {
 
 .mobile-lang-switcher .lang-btn {
   font-size: 14px;
-  padding: 6px 14px;
+  padding: 8px 18px;
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: var(--radius-pill);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -560,8 +596,13 @@ img, svg, video {
 
 /* Respect Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
   html {
-    scroll-behavior: auto;
+    scroll-behavior: auto !important;
   }
   .fade-up {
     opacity: 1 !important;
@@ -570,5 +611,58 @@ img, svg, video {
   }
   .btn:hover, .floating-call-btn:hover {
     transform: none !important;
+  }
+  button, a {
+    transition: none !important;
+  }
+}
+
+/* ==========================================================================
+   Accessibility: Focus Outlines
+   ========================================================================== */
+
+:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 3px;
+}
+
+/* High contrast outline on dark backgrounds */
+.section-hero :focus-visible,
+.site-footer :focus-visible,
+.mobile-menu :focus-visible,
+.advantage-card--dark :focus-visible,
+.contact-card :focus-visible,
+.navbar:not(.scrolled) :focus-visible,
+.floating-call-btn:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 3px;
+}
+
+/* On yellow elements or active buttons, dark outline for contrast */
+.btn-primary:focus-visible,
+.events-banner :focus-visible,
+.lang-btn.active:focus-visible {
+  outline: 2px solid var(--black) !important;
+  outline-offset: 3px;
+}
+
+.form-input:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Responsive adjustments for small screens (<400px)
+   ========================================================================== */
+
+@media (max-width: 400px) {
+  .site-header {
+    padding: 0 8px;
+  }
+  .navbar {
+    padding: 0 12px;
+  }
+  .navbar-right {
+    gap: 8px;
   }
 }

@@ -73,9 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const offset = 24; // extra breathing room
         const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - (navHeight + offset);
 
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         window.scrollTo({
           top: targetPosition,
-          behavior: 'smooth',
+          behavior: prefersReduced ? 'auto' : 'smooth',
         });
 
         if (window.history && window.history.pushState) {
