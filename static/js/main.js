@@ -9,19 +9,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileCloseBtn = document.getElementById('mobile-close-btn');
   const mobileLinks = document.querySelectorAll('.mobile-nav-item');
 
-  // 1. Navbar scrolled state
-  const updateNavbarState = () => {
-    if (!navbar) return;
-    const scrollThreshold = 50;
-    if (window.scrollY > scrollThreshold) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  };
-
-  window.addEventListener('scroll', updateNavbarState, { passive: true });
-  updateNavbarState();
+  // 1. Navbar scrolled state (via IntersectionObserver on hero section)
+  const heroSection = document.getElementById('hero');
+  if (navbar && heroSection && 'IntersectionObserver' in window) {
+    const heroObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          navbar.classList.toggle('is-scrolled', !entry.isIntersecting);
+        });
+      },
+      {
+        rootMargin: '-90px 0px 0px 0px',
+        threshold: 0,
+      }
+    );
+    heroObserver.observe(heroSection);
+  }
 
   // 2. Mobile Burger Menu
   const openMobileMenu = () => {

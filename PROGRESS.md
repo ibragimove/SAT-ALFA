@@ -97,3 +97,10 @@
 - Configured `.nav-links` as `flex: 1 1 auto` with fluid `gap: clamp(10px, 1.2vw, 26px)` and `margin: 0 16px` for spacing.
 - Moved desktop navbar links breakpoint to `min-width: 1280px` (burger menu active below 1280px), with font scaling `clamp(12px, 0.8vw, 13.5px)` between 1280px and 1440px.
 - Verified `python manage.py check` passes with 0 issues.
+
+
+## FIX F: Navbar scrolled state yellow blur styling & IntersectionObserver
+- Replaced scroll-distance listener with an `IntersectionObserver` observing `#hero` with `rootMargin: '-90px 0px 0px 0px'`, toggling `'is-scrolled'` on `#main-navbar` when `#about` reaches the navbar.
+- Styled `.navbar.is-scrolled` with brand yellow blur `rgba(241, 255, 10, 0.78)` and `backdrop-filter: blur(16px) saturate(140%)` (solid `#F1FF0A` fallback under `@supports not`).
+- Configured black `#0D0C11` text, phone, links, burger icon, and active switcher pill (`#0D0C11` background, `#F1FF0A` text) with 250ms smooth transition (disabled under `prefers-reduced-motion`).
+- Removed all legacy white scrolled navbar background rules; verified `manage.py check` and all 17 tests pass.
