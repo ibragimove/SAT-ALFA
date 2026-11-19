@@ -89,3 +89,11 @@
 - Added double-click protection (`isSubmitting` lock + button disable) and modal auto-close after 2.5s on successful submission (modal stays open on errors).
 - Extended `core/tests_modal.py` with mock Telegram testing verifying dual form submission saving 2 Application records; all 17 tests pass.
 - Command to run: `python manage.py test`.
+
+
+## FIX E: Navbar text wrapping in Russian & Uzbek
+- Updated `.navbar` in `static/css/main.css` to `flex-wrap: nowrap`, ensuring logo, links, phone, and switcher stay on a single row.
+- Applied `white-space: nowrap` and `flex-shrink: 0` to brand logo text, phone number, and language switcher.
+- Configured `.nav-links` as `flex: 1 1 auto` with fluid `gap: clamp(10px, 1.2vw, 26px)` and `margin: 0 16px` for spacing.
+- Moved desktop navbar links breakpoint to `min-width: 1280px` (burger menu active below 1280px), with font scaling `clamp(12px, 0.8vw, 13.5px)` between 1280px and 1440px.
+- Verified `python manage.py check` passes with 0 issues.
