@@ -119,3 +119,10 @@
 - Updated `static/js/carousel.js` with a 6px drag threshold to prevent clicks during carousel panning.
 - Added `results_view` TextBlock to `seed_demo.py` and database (uz: "To'liq ko'rish", en: "View full result", ru: "Смотреть полностью").
 - Extended `core/tests_results.py` with lightbox markup and data-lightbox existence tests; all 22 tests pass.
+
+
+## FIX I: Flag language switcher dropdown & mobile language pills
+- Created SVG flag assets in `static/img/flags/` (`gb.svg`, `uz.svg`, `ru.svg`).
+- Created `templates/partials/_lang_switcher.html` featuring a 40px round pill button with current flag and chevron icon, opening an accessible right-aligned dropdown card with English, O'zbek, and Русский options.
+- Added dropdown keyboard navigation (ArrowUp/ArrowDown, Enter, Space, Escape focus return), outside-click dismiss, and mobile pills inside the full-screen burger menu in `static/css/main.css` and `static/js/main.js`.
+- Added test suite `core/tests_lang.py` verifying links, flags, active row selection, and removal of old text switcher; all 26 tests pass.

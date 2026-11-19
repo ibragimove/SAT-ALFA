@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. Mobile Burger Menu
   const openMobileMenu = () => {
     if (!mobileMenu) return;
+    if (typeof closeLangDropdown === 'function') closeLangDropdown(false);
     mobileMenu.classList.add('open');
     mobileMenu.setAttribute('aria-hidden', 'false');
     if (burgerBtn) burgerBtn.setAttribute('aria-expanded', 'true');
@@ -61,6 +62,100 @@ document.addEventListener('DOMContentLoaded', () => {
   mobileLinks.forEach((link) => {
     link.addEventListener('click', closeMobileMenu);
   });
+
+  // 3. Language Dropdown Switcher
+  const langWrap = document.getElementById('lang-dropdown-wrap');
+  let closeLangDropdown = null;
+
+  if (langWrap) {
+    const langBtn = document.getElementById('lang-dropdown-btn');
+    const langMenu = document.getElementById('lang-dropdown-menu');
+    const menuItems = langMenu ? Array.from(langMenu.querySelectorAll('[role="menuitem"]')) : [];
+
+    const openDropdown = () => {
+      if (!langMenu || !langBtn) return;
+      langMenu.classList.add('open');
+      langBtn.setAttribute('aria-expanded', 'true');
+
+      // Focus active item or first item
+      const activeItem = langMenu.querySelector('.lang-menu-item.active') || menuItems[0];
+      if (activeItem) {
+        setTimeout(() => activeItem.focus(), 50);
+      }
+    };
+
+    closeLangDropdown = (returnFocus = false) => {
+      if (!langMenu || !langBtn) return;
+      if (!langMenu.classList.contains('open')) return;
+      langMenu.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', 'false');
+      if (returnFocus && langBtn) {
+        langBtn.focus();
+      }
+    };
+
+    if (langBtn) {
+      langBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = langMenu && langMenu.classList.contains('open');
+        if (isOpen) {
+          closeLangDropdown(true);
+        } else {
+          openDropdown();
+        }
+      });
+    }
+
+    // Keyboard navigation inside dropdown menu
+    if (langMenu) {
+      langMenu.addEventListener('keydown', (e) => {
+        const currentIndex = menuItems.indexOf(document.activeElement);
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          const nextIndex = (currentIndex + 1) % menuItems.length;
+          menuItems[nextIndex].focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          const prevIndex = (currentIndex - 1 + menuItems.length) % menuItems.length;
+          menuItems[prevIndex].focus();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          menuItems[0].focus();
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          menuItems[menuItems.length - 1].focus();
+        }
+      });
+    }
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (langWrap && !langWrap.contains(e.target)) {
+        closeLangDropdown(false);
+      }
+    });
+
+    // Close on Escape key without closing modals behind it
+    document.addEventListener(
+      'keydown',
+      (e) => {
+        if (e.key === 'Escape' && langMenu && langMenu.classList.contains('open')) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+          closeLangDropdown(true);
+        }
+      },
+      true
+    );
+
+    // Close when clicking an item
+    menuItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        closeLangDropdown(false);
+      });
+    });
+  }
 
   // 3. Smooth Anchor Scrolling with Navbar Offset
   const anchorLinks = document.querySelectorAll('a[href^="#"]');

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 250" width="500" height="250">
+  <rect width="500" height="80" fill="#0099b5"/>
+  <rect y="80" width="500" height="5" fill="#ce1126"/>
+  <rect y="85" width="500" height="80" fill="#ffffff"/>
+  <rect y="165" width="500" height="5" fill="#ce1126"/>
+  <rect y="170" width="500" height="80" fill="#1eb53a"/>
+  <!-- Crescent -->
+  <circle cx="70" cy="40" r="30" fill="#ffffff"/>
+  <circle cx="78" cy="40" r="25" fill="#0099b5"/>
+  <!-- 12 Stars (3 rows: 3 stars on bottom, 4 in middle, 5 on top? Actually standard is 3 in 1st col/row: 3-4-5 arrangement) -->
+  <g id="star" fill="#ffffff">
+    <polygon points="0,-4 1.2,-1.2 4,-1.2 1.8,0.5 2.5,3.2 0,1.8 -2.5,3.2 -1.8,0.5 -4,-1.2 -1.2,-1.2"/>
+  </g>
+  <!-- Row 1 (top): 5 stars -->
+  <use href="#star" x="120" y="20"/>
+  <use href="#star" x="136" y="20"/>
+  <use href="#star" x="152" y="20"/>
+  <use href="#star" x="168" y="20"/>
+  <use href="#star" x="184" y="20"/>
+  <!-- Row 2 (middle): 4 stars -->
+  <use href="#star" x="136" y="40"/>
+  <use href="#star" x="152" y="40"/>
+  <use href="#star" x="168" y="40"/>
+  <use href="#star" x="184" y="40"/>
+  <!-- Row 3 (bottom): 3 stars -->
+  <use href="#star" x="152" y="60"/>
+  <use href="#star" x="168" y="60"/>
+  <use href="#star" x="184" y="60"/>
+</svg>

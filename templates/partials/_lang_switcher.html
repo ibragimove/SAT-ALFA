@@ -1,0 +1,49 @@
+{% load static core_tags %}
+{% with lang=LANGUAGE_CODE|default:request.LANGUAGE_CODE %}
+<div class="lang-dropdown-wrap" id="lang-dropdown-wrap">
+  <button type="button" class="lang-dropdown-btn" id="lang-dropdown-btn"
+          aria-haspopup="menu" aria-expanded="false" aria-label="Select language"
+          aria-controls="lang-dropdown-menu">
+    {% if lang == 'en' %}
+      <img src="{% static 'img/flags/gb.svg' %}" alt="" class="flag-circle">
+    {% elif lang == 'ru' %}
+      <img src="{% static 'img/flags/ru.svg' %}" alt="" class="flag-circle">
+    {% else %}
+      <img src="{% static 'img/flags/uz.svg' %}" alt="" class="flag-circle">
+    {% endif %}
+    <svg class="lang-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+
+  <div class="lang-dropdown-menu" id="lang-dropdown-menu" role="menu" aria-labelledby="lang-dropdown-btn">
+    <a href="{% lang_url 'en' %}" class="lang-menu-item {% if lang == 'en' %}active{% endif %}" role="menuitem" lang="en" hreflang="en" {% if lang == 'en' %}aria-current="true"{% endif %}>
+      <img src="{% static 'img/flags/gb.svg' %}" alt="" class="flag-circle flag-circle--row">
+      <span class="lang-name">English</span>
+      {% if lang == 'en' %}
+        <svg class="lang-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      {% endif %}
+    </a>
+    <a href="{% lang_url 'uz' %}" class="lang-menu-item {% if lang == 'uz' %}active{% endif %}" role="menuitem" lang="uz" hreflang="uz" {% if lang == 'uz' %}aria-current="true"{% endif %}>
+      <img src="{% static 'img/flags/uz.svg' %}" alt="" class="flag-circle flag-circle--row">
+      <span class="lang-name">O'zbek</span>
+      {% if lang == 'uz' %}
+        <svg class="lang-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      {% endif %}
+    </a>
+    <a href="{% lang_url 'ru' %}" class="lang-menu-item {% if lang == 'ru' %}active{% endif %}" role="menuitem" lang="ru" hreflang="ru" {% if lang == 'ru' %}aria-current="true"{% endif %}>
+      <img src="{% static 'img/flags/ru.svg' %}" alt="" class="flag-circle flag-circle--row">
+      <span class="lang-name">Русский</span>
+      {% if lang == 'ru' %}
+        <svg class="lang-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      {% endif %}
+    </a>
+  </div>
+</div>
+{% endwith %}

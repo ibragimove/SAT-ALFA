@@ -1,4 +1,4 @@
-{% load core_tags %}
+{% load static core_tags %}
 <header id="site-header" class="site-header">
   <nav class="navbar" id="main-navbar" aria-label="Main Navigation">
     <div class="navbar-left">
@@ -28,13 +28,7 @@
         <a href="tel:{{ site_settings.phone }}" class="nav-phone">{{ site_settings.phone }}</a>
       {% endif %}
 
-      <div class="lang-switcher" aria-label="Language Switcher">
-        <a href="{% lang_url 'uz' %}" class="lang-btn {% if LANGUAGE_CODE == 'uz' %}active{% endif %}" hreflang="uz">UZ</a>
-        <span class="lang-divider">/</span>
-        <a href="{% lang_url 'en' %}" class="lang-btn {% if LANGUAGE_CODE == 'en' %}active{% endif %}" hreflang="en">EN</a>
-        <span class="lang-divider">/</span>
-        <a href="{% lang_url 'ru' %}" class="lang-btn {% if LANGUAGE_CODE == 'ru' %}active{% endif %}" hreflang="ru">RU</a>
-      </div>
+      {% include 'partials/_lang_switcher.html' %}
 
       <button type="button" class="burger-btn" id="burger-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-menu">
         <span class="burger-line"></span>
@@ -67,9 +61,20 @@
         <a href="tel:{{ site_settings.phone }}" class="mobile-phone">{{ site_settings.phone }}</a>
       {% endif %}
       <div class="mobile-lang-switcher">
-        <a href="{% lang_url 'uz' %}" class="lang-btn {% if LANGUAGE_CODE == 'uz' %}active{% endif %}">UZ</a>
-        <a href="{% lang_url 'en' %}" class="lang-btn {% if LANGUAGE_CODE == 'en' %}active{% endif %}">EN</a>
-        <a href="{% lang_url 'ru' %}" class="lang-btn {% if LANGUAGE_CODE == 'ru' %}active{% endif %}">RU</a>
+        {% with lang=LANGUAGE_CODE|default:request.LANGUAGE_CODE %}
+        <a href="{% lang_url 'uz' %}" class="mobile-lang-pill {% if lang == 'uz' %}active{% endif %}" lang="uz" hreflang="uz">
+          <img src="{% static 'img/flags/uz.svg' %}" alt="" class="flag-circle flag-circle--sm">
+          <span>UZ</span>
+        </a>
+        <a href="{% lang_url 'en' %}" class="mobile-lang-pill {% if lang == 'en' %}active{% endif %}" lang="en" hreflang="en">
+          <img src="{% static 'img/flags/gb.svg' %}" alt="" class="flag-circle flag-circle--sm">
+          <span>EN</span>
+        </a>
+        <a href="{% lang_url 'ru' %}" class="mobile-lang-pill {% if lang == 'ru' %}active{% endif %}" lang="ru" hreflang="ru">
+          <img src="{% static 'img/flags/ru.svg' %}" alt="" class="flag-circle flag-circle--sm">
+          <span>RU</span>
+        </a>
+        {% endwith %}
       </div>
     </div>
   </div>
