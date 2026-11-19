@@ -111,3 +111,11 @@
 - Updated `static/css/sections.css` with 2-line ellipsis clamping for `.result-student`, `object-fit: contain` white frame for `.result-card-media`, and baseline-aligned `.result-card-footer`.
 - Cards with an image display the contained image in the middle area; cards without an image display the watermark and open space in `.result-card-cert`.
 - Added test suite `core/tests_results.py` verifying name rendering for cards with and without images and empty-name handling; all 20 tests pass.
+
+
+## FIX H: Result image lightbox modal & carousel drag threshold
+- Added `data-lightbox`, `data-src`, `data-name`, `data-score` and a small black pill view button with `{% t 'results_view' %}` to image cards in `templates/partials/_results.html`.
+- Created `templates/partials/_result_lightbox.html` and `static/js/lightbox.js` with focus trap, loading placeholder, backdrop dismiss, and prioritized Escape handler.
+- Updated `static/js/carousel.js` with a 6px drag threshold to prevent clicks during carousel panning.
+- Added `results_view` TextBlock to `seed_demo.py` and database (uz: "To'liq ko'rish", en: "View full result", ru: "Смотреть полностью").
+- Extended `core/tests_results.py` with lightbox markup and data-lightbox existence tests; all 22 tests pass.

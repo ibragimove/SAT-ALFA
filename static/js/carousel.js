@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mouse drag scrolling
     let isDown = false;
     let startX = 0;
+    let downPageX = 0;
     let scrollLeft = 0;
     let hasDragged = false;
 
@@ -68,13 +69,17 @@ document.addEventListener('DOMContentLoaded', () => {
       hasDragged = false;
       track.classList.add('is-dragging');
       startX = e.pageX - track.offsetLeft;
+      downPageX = e.pageX;
       scrollLeft = track.scrollLeft;
     });
 
-    const stopDragging = () => {
+    const stopDragging = (e) => {
       if (!isDown) return;
       isDown = false;
       track.classList.remove('is-dragging');
+      if (e && Math.abs(e.pageX - downPageX) > 6) {
+        hasDragged = true;
+      }
       updateButtons();
     };
 
@@ -86,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const x = e.pageX - track.offsetLeft;
       const walk = (x - startX) * 1.5;
-      if (Math.abs(walk) > 4) {
+      if (Math.abs(e.pageX - downPageX) > 6) {
         hasDragged = true;
       }
       track.scrollLeft = scrollLeft - walk;

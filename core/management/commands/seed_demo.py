@@ -161,6 +161,11 @@ class Command(BaseCommand):
                 'en': "Improve Your Score",
                 'ru': "Улучшите свой балл",
             },
+            'results_view': {
+                'uz': "To'liq ko'rish",
+                'en': "View full result",
+                'ru': "Смотреть полностью",
+            },
             'events_title': {
                 'uz': "TADBIRLAR VA MOCK TESTLAR",
                 'en': "EVENTS & MOCK TESTS",
@@ -254,7 +259,7 @@ class Command(BaseCommand):
         }
 
         for key, vals in text_blocks.items():
-            TextBlock.objects.update_or_create(
+            TextBlock.objects.get_or_create(
                 key=key,
                 defaults={
                     'text': vals['uz'],
