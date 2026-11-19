@@ -7,6 +7,25 @@
   <title>{% t 'meta_title' %}</title>
   <meta name="description" content="{% t 'meta_description' %}">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="{% static 'img/logo.jpg' %}">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+  <!-- Multilingual Hreflang Links -->
+  <link rel="alternate" hreflang="uz" href="{% lang_url 'uz' %}">
+  <link rel="alternate" hreflang="en" href="{% lang_url 'en' %}">
+  <link rel="alternate" hreflang="ru" href="{% lang_url 'ru' %}">
+  <link rel="alternate" hreflang="x-default" href="{% lang_url 'uz' %}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{% t 'meta_title' %}">
+  <meta property="og:description" content="{% t 'meta_description' %}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  <meta property="og:image" content="{% static 'img/logo.jpg' %}">
+
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

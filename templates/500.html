@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>500 - Server xatosi | SAT ALFA</title>
+  <link rel="icon" type="image/jpeg" href="{% static 'img/logo.jpg' %}">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <style>
+    body {
+      background-color: #0D0C11;
+      color: #FFFFFF;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-x: hidden;
+    }
+    .error-header {
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+    }
+    .error-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #FFFFFF;
+    }
+    .error-logo {
+      color: #F1FF0A;
+    }
+    .error-brand-text {
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+    .error-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      text-align: center;
+      position: relative;
+    }
+    .error-decor-blob {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(241, 255, 10, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .error-card {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      width: 100%;
+      padding: 48px 32px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+    .error-code {
+      font-size: clamp(80px, 15vw, 140px);
+      font-weight: 900;
+      color: #F1FF0A;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin: 0 0 16px 0;
+      text-shadow: 0 4px 30px rgba(241, 255, 10, 0.3);
+    }
+    .error-title {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 800;
+      margin: 0 0 16px 0;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+    .error-text {
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.6;
+      margin: 0 auto 32px auto;
+      max-width: 480px;
+    }
+    .error-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background-color: #F1FF0A;
+      color: #0D0C11;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 15px 32px;
+      border-radius: 9999px;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(241, 255, 10, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .error-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(241, 255, 10, 0.5);
+    }
+    .error-footer {
+      padding: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <header class="error-header">
+    <a href="/" class="error-brand" aria-label="SAT ALFA Home">
+      <svg class="error-logo" width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,15 85,65 15,65" stroke="currentColor" stroke-width="12" fill="none" stroke-linejoin="round"/>
+        <path d="M30 75 L50 63 L70 75" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M35 87 L50 78 L65 87" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="error-brand-text">SAT ALFA</span>
+    </a>
+  </header>
+
+  <main class="error-main">
+    <div class="error-decor-blob" aria-hidden="true"></div>
+    <div class="error-card">
+      <div class="error-code">500</div>
+      <h1 class="error-title">Server xatosi / Server Error</h1>
+      <p class="error-text">
+        Kutilmagan xatolik yuz berdi. Iltimos, birozdan so'ng qayta urinib ko'ring.<br>
+        An unexpected error occurred. Please try again later.
+      </p>
+      <a href="/" class="error-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/>
+        </svg>
+        <span>Bosh sahifaga qaytish / Back to Home</span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="error-footer">
+    &copy; SAT ALFA. Barcha huquqlar himoyalangan.
+  </footer>
+</body>
+</html>

@@ -1,5 +1,5 @@
 from django.core.cache import cache
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_POST
 from .forms import ApplicationForm
@@ -98,4 +98,12 @@ def apply(request):
 
     # Always return success if saved, even if Telegram failed
     return JsonResponse({'ok': True, 'message': 'Application saved successfully'})
+
+
+def robots(request):
+    lines = [
+        "User-agent: *",
+        "Allow: /",
+    ]
+    return HttpResponse("\n".join(lines) + "\n", content_type="text/plain")
 

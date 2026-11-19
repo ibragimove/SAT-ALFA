@@ -67,3 +67,9 @@
 - Ensured all images have descriptive alt text, added high-contrast :focus-visible outlines, and dynamic <html lang> attributes.
 - Configured loading='lazy' on all content images and updated about-video to preload='metadata'.
 - Implemented prefers-reduced-motion overrides disabling fade-up animations and carousel/anchor smooth scrolling.
+
+## Task 12: Metadata, Error Pages, and Robots.txt
+- Configured dynamic meta tags in templates/base.html: <title>, meta description, canonical URL, hreflang links (uz, en, ru, x-default), Open Graph properties, and favicon.
+- Designed and built styled error pages templates/404.html and templates/500.html in black & yellow theme with return-to-home buttons (zero DB queries in 500.html).
+- Implemented /robots.txt endpoint in core/views.py and core/urls.py returning plain text that allows all search engine indexing.
+- Verified DEBUG=False styled 404 rendering, source verification of titles/canonical/hreflang across uz/en/ru, and confirmed all 10 project tests pass.
