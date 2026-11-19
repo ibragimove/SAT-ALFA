@@ -49,32 +49,7 @@
             <h3 class="contact-title">{% t 'contact_title' %}</h3>
           </div>
 
-          <form class="contact-form" id="contact-form" method="post" action="{% url 'core:apply' %}"
-                data-success="{% t 'form_success' %}"
-                data-error="{% t 'form_error' %}" novalidate>
-            {% csrf_token %}
-            <!-- Honeypot field (hidden from users) -->
-            <div style="display:none;" aria-hidden="true">
-              <input type="text" name="website" id="form-website" tabindex="-1" autocomplete="off">
-            </div>
-
-            <div class="form-group">
-              <input type="text" name="name" id="contact-name" class="form-input" placeholder="{% t 'form_name_placeholder' %}" required autocomplete="name">
-            </div>
-
-            <div class="form-group">
-              <input type="tel" name="phone" id="contact-phone" class="form-input" placeholder="+998 (__) ___-__-__" required autocomplete="tel">
-            </div>
-
-            <div class="form-message" id="form-message" style="display:none;"></div>
-
-            <button type="submit" class="btn btn-primary contact-submit-btn" id="contact-submit-btn">
-              <svg class="btn-sparkle" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/>
-              </svg>
-              <span>{% t 'form_submit' %}</span>
-            </button>
-          </form>
+          {% include 'partials/_form.html' with prefix='contact' %}
         </div>
       </div>
     </div>

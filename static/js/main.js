@@ -239,4 +239,143 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // 8. Application Modal
+  const modal = document.getElementById('apply-modal');
+  if (modal) {
+    const backdrop = document.getElementById('modal-backdrop');
+    const card = document.getElementById('modal-card');
+    const closeBtn = document.getElementById('modal-close-btn');
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let triggerElement = null;
+
+    const getFocusableElements = () => {
+      return card.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([tabindex="-1"]), textarea, select, [tabindex]:not([tabindex="-1"])'
+      );
+    };
+
+    const openModal = (trigger) => {
+      triggerElement = trigger;
+      modal.setAttribute('aria-hidden', 'false');
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+
+      // Focus the name input inside the modal
+      const nameInput = document.getElementById('modal-name');
+      if (nameInput) {
+        setTimeout(() => nameInput.focus(), prefersReduced ? 0 : 150);
+      }
+    };
+
+    const closeModal = () => {
+      modal.setAttribute('aria-hidden', 'true');
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+
+      if (triggerElement && typeof triggerElement.focus === 'function') {
+        triggerElement.focus();
+      }
+      triggerElement = null;
+    };
+
+    // Open triggers
+    document.querySelectorAll('[data-open-form]').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(el);
+      });
+    });
+
+    // Close triggers
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) {
+        closeModal();
+      }
+    });
+
+    // Focus trap
+    modal.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      const focusable = getFocusableElements();
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+
+    // Modal form AJAX submission (mirrors form.js for the modal form)
+    const modalForm = document.getElementById('modal-form');
+    if (modalForm) {
+      const modalSubmitBtn = document.getElementById('modal-submit-btn') || modalForm.querySelector('button[type="submit"]');
+      const modalMessage = document.getElementById('modal-message');
+
+      const getCsrfToken = () => {
+        const csrfInput = modalForm.querySelector('[name=csrfmiddlewaretoken]');
+        if (csrfInput && csrfInput.value) return csrfInput.value;
+        const cookieMatch = document.cookie.match(/csrftoken=([^;]+)/);
+        return cookieMatch ? cookieMatch[1] : '';
+      };
+
+      const showMessage = (el, text, isSuccess) => {
+        if (!el) return;
+        el.textContent = text;
+        el.style.color = isSuccess ? '#0D0C11' : '#FFFFFF';
+        el.style.background = isSuccess ? '#F1FF0A' : '#E53935';
+        el.style.padding = '12px 16px';
+        el.style.borderRadius = '30px';
+        el.style.fontSize = '14px';
+        el.style.fontWeight = '600';
+        el.style.textAlign = 'center';
+        el.style.marginBottom = '8px';
+        el.style.display = 'block';
+      };
+
+      modalForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (modalMessage) { modalMessage.style.display = 'none'; }
+        if (modalSubmitBtn) { modalSubmitBtn.disabled = true; modalSubmitBtn.classList.add('loading'); }
+
+        const successText = modalForm.getAttribute('data-success') || 'Your application has been received!';
+        const errorText = modalForm.getAttribute('data-error') || 'An error occurred.';
+
+        try {
+          const formData = new FormData(modalForm);
+          const actionUrl = modalForm.getAttribute('action') || window.location.pathname;
+          const response = await fetch(actionUrl, {
+            method: 'POST',
+            headers: { 'X-CSRFToken': getCsrfToken(), 'X-Requested-With': 'XMLHttpRequest' },
+            body: formData,
+          });
+          const data = await response.json().catch(() => ({}));
+
+          if (response.ok && data.ok) {
+            showMessage(modalMessage, successText, true);
+            modalForm.reset();
+          } else {
+            showMessage(modalMessage, errorText, false);
+          }
+        } catch (err) {
+          showMessage(modalMessage, errorText, false);
+        } finally {
+          if (modalSubmitBtn) { modalSubmitBtn.disabled = false; modalSubmitBtn.classList.remove('loading'); }
+        }
+      });
+    }
+  }
 });

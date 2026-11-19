@@ -1,0 +1,11 @@
+{% load core_tags %}
+<div id="apply-modal" class="apply-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
+  <div class="apply-modal-backdrop" id="modal-backdrop"></div>
+  <div class="apply-modal-card" id="modal-card">
+    <button type="button" class="apply-modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
+    <div class="apply-modal-header">
+      <h3 class="apply-modal-title" id="modal-title">{% t 'contact_title' %}</h3>
+    </div>
+    {% include 'partials/_form.html' with prefix='modal' %}
+  </div>
+</div>

@@ -73,3 +73,11 @@
 - Designed and built styled error pages templates/404.html and templates/500.html in black & yellow theme with return-to-home buttons (zero DB queries in 500.html).
 - Implemented /robots.txt endpoint in core/views.py and core/urls.py returning plain text that allows all search engine indexing.
 - Verified DEBUG=False styled 404 rendering, source verification of titles/canonical/hreflang across uz/en/ru, and confirmed all 10 project tests pass.
+
+
+## FIX B: Application popup modal and floating apply button
+- Created reusable form partial `templates/partials/_form.html` supporting configurable ID prefixes (`prefix='contact'` and `prefix='modal'`), preserving honeypot, CSRF, and form.js compatibility.
+- Created `templates/partials/_modal.html` with `id="apply-modal"`, `role="dialog"`, `aria-modal="true"`, dark blurred backdrop, and centered card.
+- Implemented modal open/close, backdrop click, Escape key dismiss, focus trap, and return-to-trigger focus in `static/js/main.js`.
+- Added yellow floating form button with black message icon next to floating call button, plus `data-open-form` across hero CTA, tariffs, results, and floating button.
+- Added test suite `core/tests_modal.py` validating 200 status, modal ID presence, at least 4 `data-open-form` elements, 2 honeypot inputs, and no duplicate IDs.
