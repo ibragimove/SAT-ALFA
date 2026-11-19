@@ -104,3 +104,10 @@
 - Styled `.navbar.is-scrolled` with brand yellow blur `rgba(241, 255, 10, 0.78)` and `backdrop-filter: blur(16px) saturate(140%)` (solid `#F1FF0A` fallback under `@supports not`).
 - Configured black `#0D0C11` text, phone, links, burger icon, and active switcher pill (`#0D0C11` background, `#F1FF0A` text) with 250ms smooth transition (disabled under `prefers-reduced-motion`).
 - Removed all legacy white scrolled navbar background rules; verified `manage.py check` and all 17 tests pass.
+
+
+## FIX G: Student name on every result card & layout parity
+- Refactored `templates/partials/_results.html` to render a shared `.result-card-header` containing the 'OFFICIAL RESULT' badge and student name directly below it on every card.
+- Updated `static/css/sections.css` with 2-line ellipsis clamping for `.result-student`, `object-fit: contain` white frame for `.result-card-media`, and baseline-aligned `.result-card-footer`.
+- Cards with an image display the contained image in the middle area; cards without an image display the watermark and open space in `.result-card-cert`.
+- Added test suite `core/tests_results.py` verifying name rendering for cards with and without images and empty-name handling; all 20 tests pass.

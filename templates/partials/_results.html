@@ -26,6 +26,18 @@
       <div class="carousel-track">
         {% for res in results %}
           <div class="carousel-item result-card">
+            <div class="result-card-header">
+              <div class="cert-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/>
+                </svg>
+                <span>OFFICIAL RESULT</span>
+              </div>
+              {% if res.student_name %}
+                <div class="result-student">{{ res.student_name }}</div>
+              {% endif %}
+            </div>
+
             {% if res.image %}
               <div class="result-card-media">
                 <img src="{{ res.image.url }}" alt="{{ res.student_name|default:'SAT Result' }}" class="result-img" loading="lazy">
@@ -33,15 +45,6 @@
             {% else %}
               <div class="result-card-cert">
                 <span class="cert-watermark" aria-hidden="true">SAT</span>
-                <div class="cert-badge">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 9.4L12 0Z"/>
-                  </svg>
-                  <span>OFFICIAL RESULT</span>
-                </div>
-                {% if res.student_name %}
-                  <div class="result-student">{{ res.student_name }}</div>
-                {% endif %}
               </div>
             {% endif %}
 
